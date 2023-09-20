@@ -32,4 +32,4 @@ Maybe.
 
 Below is a picture of how it looks on a 4-inch waveshare display, on the RaspberryPi. Note that this display is connected via SPI and controlled via the `fbtft` driver. It's not using the RaspberryPi's builtin graphics hardware. If you have a proper display, connected via HDMI or the built-in display connector, using a wayland compositor or X server, as well as an accelerated renderer would be the better choice imho.
 
-![](picture.png)
+![](picture.jpg)
