@@ -1,38 +1,32 @@
-# Slint Rust Template
+# Slint framebuffer example
 
-A template for a Rust application that's using [Slint](https://slint-ui.com) for the user interface.
+⚠️⚠️⚠️
+This example is very rudimentary. It may not work with all framebuffer drivers (in fact, with most it won't, because it assumes 16-bit pixels, assuming the driver will understnad).
+Use at your own risk, and be ready to reboot if your screen is frozen 🙈
 
-## About
+## What is this?
 
-This template helps you get started developing a Rust application with Slint as toolkit
-for the user interface. It demonstrates the integration between the `.slint` UI markup and
-Rust code, how to trigger react to callbacks, get and set properties and use basic widgets.
+This example contains a very simple slint [Platform](https://docs.rs/slint/latest/slint/platform/trait.Platform.html) implementation, that renders to a Linux framebuffer device.
 
-## Usage
+Slint is a UI library written in Rust. Learn more about it at https://slint.dev
 
-1. Install Rust by following the [Rust Getting Started Guide](https://www.rust-lang.org/learn/get-started).
-   Once this is done, you should have the ```rustc``` compiler and the ```cargo``` build system installed in your path.
-2. Install [`cargo-generate`](https://github.com/cargo-generate/cargo-generate)
-    ```
-    cargo install cargo-generate
-    ```
-3. Set up a sample project with this template
-    ```
-    cargo generate --git https://github.com/slint-ui/slint-rust-template --name my-project
-    cd my-project
-    ```
-3. Build with cargo
-    ```
-    cargo build
-    ```
-4. Run the application binary
-     ```
-     cargo run
-     ```
+It uses single-buffered rendering (double-buffer would be supported by the framebuffer API, however it's not supported by all drivers - especially the `fbtft` driver [does not support it](https://github.com/notro/fbtft/issues/401)).
 
-We recommend using an IDE for development, along with our [LSP-based IDE integration for `.slint` files](https://github.com/slint-ui/slint/blob/master/tools/lsp/README.md). You can also load this project directly in [Visual Studio Code](https://code.visualstudio.com) and install our [Slint extension](https://marketplace.visualstudio.com/items?itemName=Slint.slint).
+## How to use
 
-## Next Steps
+1. Open `main.rs` and make sure the `tty_path` and `fb_path` values match your system.
+2. Compile & run, with `cargo run`
 
-We hope that this template helps you get started and you enjoy exploring making user interfaces with Slint. To learn more
-about the Slint APIs and the `.slint` markup language check out our [online documentation](https://slint-ui.com/docs/rust/slint/).
+Note that touch input is not supported.
+
+## Why?
+
+I wanted to see how adding a custom platform implementation works (the process went very smooth, thanks to [excellent upstream documentation](https://docs.rs/slint/latest/slint/docs/mcu/index.html))
+
+## Does it work?
+
+Maybe.
+
+Below is a picture of how it looks on a 4-inch waveshare display, on the RaspberryPi. Note that this display is connected via SPI and controlled via the `fbtft` driver. It's not using the RaspberryPi's builtin graphics hardware. If you have a proper display, connected via HDMI or the built-in display connector, using a wayland compositor or X server, as well as an accelerated renderer would be the better choice imho.
+
+![](picture.png)
