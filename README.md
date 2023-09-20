@@ -13,14 +13,14 @@ This example contains a very simple slint [Platform](https://docs.rs/slint/lates
 
 Slint is a UI library written in Rust. Learn more about it at https://slint.dev
 
-It uses single-buffered rendering (double-buffer would be supported by the framebuffer API, however it's not supported by all drivers - especially the `fbtft` driver [does not support it](https://github.com/notro/fbtft/issues/401)).
+The example uses single-buffered rendering (double-buffer would be supported by the framebuffer API, however it's not supported by all drivers - especially the `fbtft` driver [does not support it](https://github.com/notro/fbtft/issues/401)).
 
 ## How to use
 
 1. Open `main.rs` and make sure the `tty_path` and `fb_path` values match your system.
 2. Compile & run, with `cargo run`
 
-Note that touch input is not supported.
+Note that touch input is not implemented.
 
 ## Why?
 
