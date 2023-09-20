@@ -1,8 +1,11 @@
 # Slint framebuffer example
 
 ⚠️⚠️⚠️
-This example is very rudimentary. It may not work with all framebuffer drivers (in fact, with most it won't, because it assumes 16-bit pixels, assuming the driver will understnad).
+
+This example is very rudimentary. It may not work with all framebuffer drivers (in fact, with most it won't, because it uses 16-bit pixels, assuming the driver will understand).
 Use at your own risk, and be ready to reboot if your screen is frozen 🙈
+
+⚠️⚠️⚠️
 
 ## What is this?
 
