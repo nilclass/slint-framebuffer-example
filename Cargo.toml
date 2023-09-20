@@ -1,0 +1,20 @@
+[package]
+name = "slint-framebuffer-example"
+version = "0.1.0"
+authors = ["Niklas Cathor <niklas.cathor@gmx.de>"]
+edition = "2021"
+build = "build.rs"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+ctrlc = { version = "3.4.1", features = ["termination"] }
+linuxfb = { git = "https://gitlab.com/nilclass/rust-linuxfb", branch = "kdsetmode" }
+
+[dependencies.slint]
+version = "1.2"
+default-features = false
+features = ["compat-1-2", "std", "software-renderer-systemfonts"]
+
+[build-dependencies]
+slint-build = "1.0"
